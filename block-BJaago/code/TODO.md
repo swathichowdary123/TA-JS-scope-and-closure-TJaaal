@@ -25,6 +25,7 @@ var userMessage = sayHelloToUser('Bran');
 ```
 
 <!-- Put your image below -->
+function declaration
 
 ![](./img/image-name.jpg)
 
