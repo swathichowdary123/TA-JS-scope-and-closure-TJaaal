@@ -32,7 +32,7 @@ The above code will throw an error `Reference Error username is not defined`.
 if (true) {
   let username = 'Arya';
 }
-console.log(useranme); -arya
+console.log(useranme); -username is not defined
 ```
 
 4. Go through the code below and write down the process of making decision about looking for the variable. Also write the output of the code below.
@@ -51,7 +51,7 @@ let username = 'John';
 if (true) {
   var username = 'Arya';
 }
-console.log(useranme); -john
+console.log(useranme); -username is already been defined.
 ```
 
 6. Go through the code below and write down the process of making decision about looking for the variable. Also write the output of the code below.
@@ -79,16 +79,17 @@ console.log(useranme); -arya
 
 ```js
 for (var i = 0; i < 10; i++) {
-  console.log(i, 'First'); -1
+  console.log(i, 'First'); 
 }
-console.log(i, 'Second'); -2
+console.log(i, 'Second'); 
 ```
 
 9. Go through the code below and write down the process of making decision about looking for the variable. Also write the output of the code below.
 
 ```js
 for (let i = 0; i < 10; i++) {
-  console.log(i, 'First'); //output
+  console.log(i, 'First'); 
 }
-console.log(i, 'Second'); //output
+console.log(i, 'Second'); 
 ```
+i is not defined
