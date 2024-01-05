@@ -12,9 +12,9 @@ function change() {
   console.log(species);
 }
 
-console.log(species); // 1
+console.log(species); - undefined
 change();
-console.log(species); // 2
+console.log(species); - vampire
 ```
 
 <!-- Put your image below -->
@@ -35,8 +35,8 @@ function topLevelFn() {
   function nestedFn() {
     var anotherLocalVar = "Local to nestedFn's scope.";
 
-    console.log(localVar); // 1
-    console.log(topLevelVar); // 2
+    console.log(localVar); -this is local scope
+    console.log(topLevelVar); - undefined
   }
 
   nestedFn();
@@ -64,16 +64,16 @@ function main() {
   function inner() {
     var four = 'Four';
 
-    console.log(one); // 1
-    console.log(two); // 2
-    console.log(three); // 3
+    console.log(one); - one
+    console.log(two); - two
+    console.log(three); -three
   }
-  console.log(four); // 4
+  console.log(four); -four
   inner();
 }
 
 main();
-console.log(one, two, three, four); // 5
+console.log(one, two, three, four); -one,two,three,four
 ```
 
 <!-- Put your image below -->
