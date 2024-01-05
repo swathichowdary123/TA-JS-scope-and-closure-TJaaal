@@ -14,7 +14,7 @@ function square(num) {
 let hundred = square(10);
 console.log(hundred);
 ```
-
+you cannot use a variable that is not initialized
 Create the execution context diagram of the following code line by line.
 
 ```js
