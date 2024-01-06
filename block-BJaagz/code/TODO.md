@@ -19,8 +19,11 @@ forEach(['Sam', 'Jon', 'Arya'], (name, i, arr) =>
 - It should work exactly like array `map` method
 
 ```js
-function map() {
-  // Your code goes here
+function map(array, callback) {
+  return array.reduce(function (accumulator, currentValue, index) {
+    accumulator.push(callback(currentValue, index, array));
+    return accumulator;
+  }, []);
 }
 
 map(['Sam', 'Jon', 'Arya'], (name) => name + name); // ['SamSam', 'JonJon', 'AryaArya']
@@ -33,8 +36,13 @@ map(['Sam', 'Jon', 'Arya'], (name) => name + name); // ['SamSam', 'JonJon', 'Ary
 - It should work exactly like array `filter` method
 
 ```js
-function filter() {
-  // Your code goes here
+function filter(array, callback) {
+  return array.reduce(function (accumulator, currentValue, index) {
+    if (callback(currentValue, index, array)) {
+      accumulator.push(currentValue);
+    }
+    return accumulator;
+  }, []);
 }
 filter(['Sam', 'Jon', 'Arya'], (name) =>
   name.startsWith('S')
