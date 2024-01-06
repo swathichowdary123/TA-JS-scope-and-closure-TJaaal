@@ -1,6 +1,20 @@
 1. Create a function by your choice that accepts a callback function.
+function callbackFunction(data) {
+  console.log("Callback received:", data);
+  return "Callback completed!";
+}
 
+performOperation(callbackFunction);
 2. Create a function by you choice that returns a function reference.
+function createMultiplier(factor) {
+  // Define the inner function (closure)
+  function multiply(number) {
+    return number * factor;
+  }
+
+  // Return the reference to the inner function
+  return multiply;
+}
 
 3. Create a higher order function called `map` that takes two inputs:
    - An array of numbers/string/boolean etc
@@ -10,7 +24,13 @@ Have `map` return a new array filled with values that are the result of the 'cal
 
 ```js
 // Your code goes here
-
+function map(array, callback) {
+  const resultArray = [];
+  for (let i = 0; i < array.length; i++) {
+    resultArray.push(callback(array[i], i, array));
+  }
+  return resultArray;
+}
 // Test Your Code
 function multiplyByTwo(n) {
   return n * 2;
@@ -24,7 +44,11 @@ multiplyByTwo(2); //-> 4
 
 ```js
 // Your code goes here
-
+function forEach(array, callback) {
+  for (let i = 0; i < array.length; i++) {
+    callback(array[i], i, array);
+  }
+}
 // Test Your Code
 let alphabet = '';
 let letters = ['a', 'b', 'c', 'd'];
@@ -36,6 +60,15 @@ console.log(alphabet); //prints 'abcd'
 
 5. Create higher-order function called `filter` takes an array and a callback, and runs the callback on each element of the array if the return value of callback is `truthy` store in new array return the new array.
 
+function filter(array, callback) {
+  const filteredArray = [];
+  for (let i = 0; i < array.length; i++) {
+    if (callback(array[i], i, array)) {
+      filteredArray.push(array[i]);
+    }
+  }
+  return filteredArray;
+}
 ```js
 // Test Your Code
 
