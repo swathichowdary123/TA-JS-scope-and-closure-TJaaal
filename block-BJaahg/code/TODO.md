@@ -15,7 +15,7 @@ console.log(
   window.knownAs
 );
 ```
-
+error-The code you provided will result in an error. In a browser environment, the window object represents the global object, and variables declared with let and const are not added as properties to the global object.
 2. Guess the output:
 
 ```js
@@ -29,7 +29,7 @@ function fullName(a, b) {
 
 console.log(window.fullName(firstName, lastName));
 ```
-
+error-The code you provided will result in an error. In a browser environment, the window object represents the global object, and variables declared with let and const are not added as properties to the global object.
 3. Make a Execution Context Diagram for the following JS and write the output.
 
 ```js
@@ -40,7 +40,7 @@ var one = addOne(0);
 var two = addOne(1);
 console.log(one, two);
 ```
-
+output-1,2
 4. Make a Execution Context Diagram for the following JS and write the output.
 
 ```js
@@ -51,7 +51,7 @@ fucntion addOne(num){
 var two = addOne(1);
 console.log(one, two);
 ```
-
+output- 1,2
 5. Make a Execution Context Diagram for the following JS and write the output.
 
 ```js
@@ -62,7 +62,7 @@ fucntion addOne(num){
 var two = addOne(1);
 console.log(two);
 ```
-
+output-1,2
 6. Make a Execution Context Diagram for the following JS and write the output.
 
 ```js
@@ -73,7 +73,7 @@ const addOne = (num) => {
 var two = addOne(1);
 console.log(two);
 ```
-
+output-2
 7. Make a Execution Context Diagram for the following JS and write the output.
 
 ```js
@@ -84,7 +84,7 @@ const addOne = (num) => {
 var two = addOne(1);
 console.log(two);
 ```
-
+output-1,2
 8. What will be the output of the following
 
 ```js
@@ -97,6 +97,7 @@ function isAwesome() {
 }
 isAwesome();
 ```
+output-undefined
 
 9. What will be the output of the following
 
@@ -110,7 +111,7 @@ function isAwesome() {
 }
 isAwesome();
 ```
-
+output-true
 10. What will be the output of the following
 
 ```js
@@ -123,6 +124,7 @@ function isAwesome() {
 }
 isAwesome();
 ```
+output-undefined
 
 11. What will be the output of the following
 
@@ -137,7 +139,7 @@ function fullName(a, b) {
 const name = fullName(firstName, lastName);
 console.log(name);
 ```
-
+output-arya stark
 12. Guess the output of the code below with a reason.
 
 ```js
@@ -148,6 +150,7 @@ sayHello();
 
 console.log(name);
 ```
+reference error-name is not defined.
 
 13. Guess the output of the code below with a reason.
 
@@ -157,7 +160,7 @@ if (true) {
 }
 console.log(name);
 ```
-
+output-Arya Stark
 14. Guess the output of the code below with a reason.
 
 ```js
@@ -166,7 +169,7 @@ if (true) {
 }
 console.log(name);
 ```
-
+reference error-name is not defined.
 15. Guess the output of the code below with a reason.
 
 ```js
@@ -184,7 +187,7 @@ for (let i = 0; i < 20; i++) {
 }
 console.log(i);
 ```
-
+output-20
 17. Guess the output and the reason behind that.
 
 ```js
@@ -196,6 +199,7 @@ function sample() {
 }
 sample();
 ```
+output-john snow
 
 18. Guess the output and the reason behind that.
 
@@ -208,6 +212,7 @@ function sample() {
 }
 sample();
 ```
+reference error-username is not defined.
 
 19. Guess the output and the reason behind that.
 
@@ -236,6 +241,8 @@ function sample() {
 }
 sample();
 ```
+john snow-first
+Arya Stark-second
 
 21. Guess the output and the reason behind that.
 
@@ -249,7 +256,9 @@ function sample(...args) {
 
 sample('First', 'Second', 'Third');
 ```
-
+Hello I am First
+Hello I am Second
+Hello I am Third
 22. Guess the output and the reason behind that.
 
 ```js
@@ -262,6 +271,9 @@ function sample(...args) {
 
 sample('First', 'Second', 'Third');
 ```
+Hello I am First
+Hello I am Second
+Hello I am Third
 
 23. Guess the output and the reason behind that.
 
@@ -275,6 +287,7 @@ if (true) {
   myFunc();
 }
 ```
+reference error-username is not defined.
 
 24. Guess the output and the reason behind that.
 
@@ -291,6 +304,7 @@ function outer() {
 
 outer();
 ```
+I love this movie called MAD MAX: FURY ROAD
 
 25. Guess the output and the reason behind that.
 
@@ -308,6 +322,7 @@ function outer() {
 
 outer();
 ```
+I love this movie called BEFORE SUNRISE
 
 26. Guess the output and the reason behind that.
 
@@ -328,6 +343,7 @@ function outer() {
 }
 outer();
 ```
+I love this movie called GONE GIRL
 
 30. Using reduce find the final value when the initial value passed is `100`. You have to pass the output of one function into the input of next function in the array `allFunctions` starts with `addOne` ends with `half`.
 
@@ -356,3 +372,32 @@ let allFunctions = [
 
 // Answer is: 447
 ```
+const addOne = (num) => {
+  return num + 1;
+};
+const subTwo = (num) => {
+  return num - 2;
+};
+const multiplyThree = (num) => {
+  return num * 3;
+};
+const half = (num) => {
+  return num / 2;
+};
+
+let allFunctions = [
+  addOne,
+  subTwo,
+  multiplyThree,
+  addOne,
+  multiplyThree,
+  half,
+];
+
+const initialValue = 100;
+
+const finalValue = allFunctions.reduce((acc, currentFunction) => {
+  return currentFunction(acc);
+}, initialValue);
+
+console.log(finalValue);
