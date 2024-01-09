@@ -6,7 +6,9 @@ The returned function accepts a sentence. If the sentence contains the `fromWord
 
 ```js
 function censor(fromWord, toWord) {
-  //  Your code goes here
+  return function(sentence) {
+    return sentence.replace(new RegExp(fromWord, 'gi'), toWord);
+  };
 }
 
 let censorSentence = censor('World', 'Sam');
@@ -25,7 +27,20 @@ The returned function either accepts two parameter or one parameter.
 
 ```js
 function multipleCensor() {
-  //  Your code goes here
+  const censoredWords = [];
+
+  return function(word1, word2) {
+    if (word1 !== undefined && word2 !== undefined) {
+      censoredWords.push(word1, word2);
+    } else if (word1 !== undefined) {
+      let updatedSentence = word1;
+      censoredWords.forEach((fromWord, index) => {
+        const toWord = censoredWords[index + 1] || ''; 
+        updatedSentence = updatedSentence.replace(new RegExp(fromWord, 'gi'), toWord);
+      });
+      return updatedSentence;
+    }
+     };
 }
 
 let censorQuote = multipleCensor();
@@ -49,8 +64,18 @@ The returned function accepts one parameter.
 - If the parameter is the same as the password it will return the object in which we stored the values.
 
 ```js
-function createCache() {
-  // Your code goes here
+function createCache(callback, password) {
+  const cacheObject = {};
+
+  return function(input) {
+    if (input === password) {
+      return cacheObject;
+    } else {
+      const result = callback(input);
+      cacheObject[input] = result;
+      return result;
+    }
+  };
 }
 
 function add10(num) {
@@ -69,8 +94,20 @@ addCache('foo'); // {12: 22, 100: 110, 1: 11}
 4. Change the above function in such a way that when the returned function is called with any other value than password. It should first check the object where we are storing the argument and return value. If the key is present return the value form the object itself. Otherwise call the callback function with the parameter.
 
 ```js
-function createCache() {
-  // Your code goes here
+function createCache(callback, password) {
+  const cacheObject = {};
+
+  return function(input) {
+    if (input === password) {
+      return cacheObject;
+    } else if (cacheObject.hasOwnProperty(input)) {
+      return cacheObject[input];
+    } else {
+      const result = callback(input);
+      cacheObject[input] = result;
+      return result;
+    }
+  };
 }
 
 function add10(num) {
