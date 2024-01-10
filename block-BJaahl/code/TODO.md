@@ -1,8 +1,17 @@
 1. Write a function that accepts a callback function and return another function. But the function should only be called once.
 
 ```js
-function once(cb) {
-  // your code goes here
+function once(callback) {
+  let called = false;
+
+  return function (...args) {
+    if (!called) {
+      called = true;
+      return callback(...args);
+    } else {
+      console.log("Function already called once, ignoring subsequent calls.");
+    }
+  };
 }
 
 // TEST
@@ -17,8 +26,17 @@ log(); // return undefinde (can't be called twice)
 2. Change the above function in such a way that the function accepts two parameter a callback function and parameter for the callback function. When calling the function pass the parameters.
 
 ```js
-function once(cb) {
-  // your code goes here
+function once(callback, ...args) {
+  let called = false;
+
+  return function () {
+    if (!called) {
+      called = true;
+      return callback(...args);
+    } else {
+      console.log("Function already called once, ignoring subsequent calls.");
+    }
+  };
 }
 
 // TEST
@@ -34,8 +52,17 @@ log(); // return undefinde (can't be called twice)
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters
 
 ```js
-function once(cb) {
-  // your code goes here
+function once(callback, ...args) {
+  let called = false;
+
+  return function (...params) {
+    if (!called) {
+      called = true;
+      return callback(...args, ...params);
+    } else {
+      console.log("Function already called once, ignoring subsequent calls.");
+    }
+  };
 }
 
 // TEST
@@ -47,8 +74,10 @@ log(); // return undefinde (can't be called twice)
 4. Create a new function `nTimes` whose 1st parameter is a callback function, 2nd parameter is the number of times the function should be called and 3rd ... nth parameter should be passed to the callback function.
 
 ```js
-function nTimes(cb, times, ...rest) {
-  // your code goes here
+function nTimes(callback, times, ...args) {
+  for (let i = 0; i < times; i++) {
+    callback(...args);
+  }
 }
 
 // TEST
